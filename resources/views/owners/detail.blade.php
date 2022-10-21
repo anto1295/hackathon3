@@ -31,7 +31,7 @@
         <label>List of animal</label><br>
         <ul>
             @foreach ($owner->animals as $animal)
-                <li>{{ $animal->name }} - {{ $animal->species }}</li>
+                <li><a href="{{route('animal.detail', $animal->id)}}">{{ $animal->name }} </a> - {{ $animal->species }}</li>
             @endforeach
         </ul>
     </form>

@@ -10,7 +10,8 @@ class Owner extends Model
 {
     use HasFactory;
 
-    public function animals(){
-        return $this->hasMany(Animal::class, 'owner_id');
+    public function animals()
+    {
+        return $this->hasMany(Animal::class);
     }
 }

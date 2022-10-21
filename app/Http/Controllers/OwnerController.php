@@ -28,12 +28,17 @@ class OwnerController extends Controller
     public function store(Request $request){
         
         //validation here
-        $this->validate($request,[
-            "firstname" => "required",
-            "surname" => "required"
-        ]);
-        //past
+        // $this->validate($request,[
+        //     "firstname" => "required",
+        //     "surname" => "required"
+        // ]);
+        // //past
         $owner = Owner::create($request->all());
+        //flash success message
+        session()->flash('success_message', 'The comment was successfully saved!');
+        //redirect from here
+        return redirect(route('home'));
+        
     }
 
 

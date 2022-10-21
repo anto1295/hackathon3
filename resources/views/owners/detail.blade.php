@@ -14,13 +14,23 @@
 </head>
 
 <body>
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h2>Owner's detail</h2>
-    <form action="">
+    <form action={{ route('owner.update', ['id' => $owner->id]) }} method="post">
+        @csrf
         <label>Name</label><br>
-        <input name="firstName" type="text" value={{ $owner->first_name }}><br>
+        <input name="firstname" type="text" value={{ $owner->first_name }}><br>
 
         <label>Surname</label><br>
-        <input name="surName" type="text" value={{ $owner->surname }}><br>
+        <input name="surname" type="text" value={{ $owner->surname }}><br>
         <hr>
         <label>Email</label><br>
         <input name="email" type="text" value={{ $owner->email }}><br>
@@ -34,6 +44,10 @@
                 <li>{{ $animal->name }} - {{ $animal->species }}</li>
             @endforeach
         </ul>
+        <div class="actions">
+            <button type="submit">Update</button>
+            <button onclick="location.href='http://www.laravel-hackathon3.test/'" type="button">Close</button>
+        </div>
     </form>
 
 </body>

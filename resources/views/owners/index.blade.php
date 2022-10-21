@@ -16,14 +16,28 @@
         th {
             width: 100px
         }
+
+        .alert-success {
+            background-color: green;
+            padding: 10px;
+            color: lightgreen;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
+    @if (Session::has('success_message'))
+        <div class="alert alert-success">
+            {{ Session::get('success_message') }}
+        </div>
+    @endif
+
     <div>
         {{-- route to the search function --}}
         {{-- i.e /search/{name} --}}
-        <form action="" method="get">
+        <form action={{ route('owner.search') }} method="get">
+            @csrf
             <label>Owner's name</label>
             <input name="name" type="text">
             <button type="submit">Search</button>
@@ -47,26 +61,15 @@
                     <td>{{ $owner->surname }}</td>
                     <td>{{ $owner->email }}</td>
                     <td>{{ $owner->phone }}</td>
-                    <td>{{ $owner->Address }}</td>
+                    <td>{{ $owner->address }}</td>
                     <td><a href={{ route('owner.detail', ['id' => $owner->id]) }}>EDIT</a></td>
 
                 </tr>
             @endforeach
         </tbody>
     </table>
-    {{-- <ul>
-        @foreach ($owners as $owner)
-            <li>
-                {{ $owner->first_name }} - {{ $owner->surname }} - <a
-                    href={{ route('owner.detail', ['id' => $owner->id]) }}>EDIT</a>
-                @foreach ($owner->animals as $animal)
-                    <p>Pet name: {{ $animal->name }} - Species: {{ $animal->species }} - Age: {{ $animal->age }} - <a
-                            href="#">edit</a></p>
-                @endforeach
-                {{-- {{ $owner->animals }} --}}
-    {{-- </li> --}}
-    {{-- @endforeach --}}
-    {{-- </ul> --}}
+    <button onclick="location.href='http://www.laravel-hackathon3.test/save-owner'">New Owner</button>
+
 </body>
 
 </html>

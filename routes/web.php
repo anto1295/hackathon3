@@ -21,3 +21,6 @@ Route::get('/', [OwnerController::class, 'index'])->name('home');
 Route::get('/owner/{id}', [OwnerController::class, 'detail'])->name('owner.detail');
 Route::get('/pet/{id}', [AnimalController::class, 'single_animal'])->name('animal.detail');
 Route::put('/pet/{id}', [AnimalController::class, 'update'])->name('animal.update');
+
+Route::get('/search', [OwnerController::class, 'search'])->name('owner.search');
+Route::post('/update/{id}', [OwnerController::class, 'update'])->name('owner.update');

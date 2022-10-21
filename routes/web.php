@@ -19,4 +19,8 @@ Route::get('/', [OwnerController::class, 'index'])->name('home');
 Route::get('/owner/{id}', [OwnerController::class, 'detail'])->name('owner.detail');
 Route::get('/search', [OwnerController::class, 'search'])->name('owner.search');
 Route::post('/update/{id}', [OwnerController::class, 'update'])->name('owner.update');
+Route::post('/save-owner', [OwnerController::class, 'store'])->name('owner.store');
+Route::get('/new-owner', function() {
+    return view('owners.new');
+})->name('owner.new');
 

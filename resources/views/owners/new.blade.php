@@ -10,13 +10,6 @@
         input {
             margin: 5px;
         }
-
-        .alert-danger {
-            background-color: red;
-            color: white;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 
@@ -31,26 +24,21 @@
         </div>
     @endif
     <h2>Owner's detail</h2>
-    <form action={{ route('owner.update', ['id' => $owner->id]) }} method="post">
+    <form action={{ route('owner.store') }} method="post">
         @csrf
         <label>Name</label><br>
-        <input name="firstname" type="text" value={{ $owner->first_name }}><br>
+        <input name="first_name" type="text" value=''><br>
 
         <label>Surname</label><br>
-        <input name="surname" type="text" value={{ $owner->surname }}><br>
+        <input name="surname" type="text" value=''><br>
         <hr>
         <label>Email</label><br>
-        <input name="email" type="text" value={{ $owner->email }}><br>
+        <input name="email" type="text" value=''><br>
         <label>Phone</label><br>
-        <input name="phone" type="text" value={{ $owner->phone }}><br>
+        <input name="phone" type="text" value=''><br>
         <label>Address</label><br>
-        <input name="address" type="text" value={{ $owner->address }}><br>
-        <label>List of animal</label><br>
-        <ul>
-            @foreach ($owner->animals as $animal)
-                <li>{{ $animal->name }} - {{ $animal->species }}</li>
-            @endforeach
-        </ul>
+        <input name="address" type="text" value=''><br>
+
         <div class="actions">
             <button type="submit">Update</button>
             <button onclick="location.href='http://www.laravel-hackathon3.test/'" type="button">Close</button>

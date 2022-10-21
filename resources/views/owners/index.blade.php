@@ -68,7 +68,11 @@
             @endforeach
         </tbody>
     </table>
-    <button onclick="location.href='http://www.laravel-hackathon3.test/save-owner'">New Owner</button>
+    <form action="">
+        <button type="submit">New Owner</button>
+        <a href={{ route('owner.new') }}>Go</a>
+    </form>
+
 
 </body>
 
